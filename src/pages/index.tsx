@@ -1,44 +1,85 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
-
-import styles from './index.module.css';
+import React, {JSX} from "react";
+import Layout from "@theme/Layout";
+import Link from "@docusaurus/Link";
+import styles from "./index.module.css";
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
+    return (
+        <header className={styles.heroBanner}>
+            <div className={styles.quantumBg}>
+                <div className={`${styles.entangledPair} ${styles.pairLeft}`}>
+                    <div className={styles.electron} />
+                </div>
+                <div className={`${styles.entangledPair} ${styles.pairRight}`}>
+                    <div className={styles.electron} />
+                </div>
+                <div className={styles.entanglement} />
+            </div>
+
+            <div className={styles.heroContent}>
+                <h1 className={styles.heroTitle}>QuantumAuth</h1>
+                <p className={styles.heroSubtitle}>
+                    Device-bound, quantum-inspired authentication.
+                </p>
+                <div className={styles.heroButtons}>
+                    <Link
+                        className={`${styles.buttonPrimary}`}
+                        to="/docs/0-Introduction/what-is-quantumauth"
+                    >
+                        Get started
+                    </Link>
+                    <a
+                        className={styles.buttonGhost}
+                        href="https://github.com/quantumauth-io"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+        </header>
+    );
 }
 
-export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
-    </Layout>
-  );
+function Feature({
+                     title,
+                     description,
+                 }: {
+    title: string;
+    description: string;
+}) {
+    return (
+        <div className={styles.feature}>
+            <h3>{title}</h3>
+            <p>{description}</p>
+        </div>
+    );
+}
+
+export default function Home(): JSX.Element {
+    return (
+        <Layout
+            title="QuantumAuth"
+            description="Device-bound, quantum-inspired authentication for modern applications."
+        >
+            <HomepageHeader />
+            <main className={styles.main}>
+                <section className={styles.featuresSection}>
+                    <Feature
+                        title="Device-bound identity"
+                        description="Bind authentication to secure keys stored in the user's TPM or secure enclave. No passwords, no shared secrets over the network."
+                    />
+                    <Feature
+                        title="Simple developer flow"
+                        description="Request a challenge, sign locally, verify on the server. Small, composable building blocks that fit into your stack."
+                    />
+                    <Feature
+                        title="Built for modern apps"
+                        description="Go backend, local client, TypeScript SDK, and examples for web, desktop, and infrastructure integrations."
+                    />
+                </section>
+            </main>
+        </Layout>
+    );
 }

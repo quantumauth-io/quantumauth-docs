@@ -1,148 +1,163 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+// docusaurus.config.ts
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+import type {Config} from '@docusaurus/types';
+import {themes as prismThemes} from 'prism-react-renderer';
 
 const config: Config = {
-    title: "QuantumAuth",
-    tagline: "Device-bound, quantum-inspired authentication.",
-    favicon: "img/favicon.ico",
+    title: 'QuantumAuth',
+    tagline: 'Device-bound, quantum-inspired authentication.',
+    favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
-  },
+    url: 'https://quantumauth-io.github.io',
+    baseUrl: '/quantumauth-docs/',
+    organizationName: 'quantumauth-io',
+    projectName: 'quantumauth-docs',
 
-  // Set the production url of your site here
-    url: "https://quantumauth-io.github.io",
-    baseUrl: "/quantumauth-docs/",
+    onBrokenLinks: 'throw',
+    onBrokenMarkdownLinks: 'warn',
+    trailingSlash: false,
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-    organizationName: "quantumauth-io",
-    projectName: "quantumauth-docs",
+    i18n: {
+        defaultLocale: 'en',
+        locales: ['en'],
+    },
 
-  onBrokenLinks: 'throw',
+    presets: [
+        [
+            'classic',
+            {
+                docs: {
+                    sidebarPath: './sidebars.ts',
+                    routeBasePath: '/docs',
+                    editUrl:
+                        'https://github.com/quantumauth-io/quantumauth-docs/edit/main/',
+                },
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+                blog: {
+                    showReadingTime: true,
+                    blogTitle: 'QuantumAuth Blog',
+                    blogDescription: 'Updates, releases, security insights & engineering notes.',
+                    postsPerPage: 10,
 
-  presets: [
-    [
-      'classic',
-      {
-        docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
-        theme: {
-          customCss: './src/css/custom.css',
-        },
-      } satisfies Preset.Options,
+                    // 👇 enable "Edit this page" for blog posts too
+                    editUrl: 'https://github.com/quantumauth-io/quantumauth-docs/edit/main/',
+                },
+                theme: {
+                    customCss: './src/css/custom.css',
+                },
+            },
+        ],
     ],
-  ],
 
-  themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
-    colorMode: {
-      respectPrefersColorScheme: true,
+    themeConfig: {
+        navbar: {
+            title: 'QuantumAuth',
+            logo: {
+                alt: 'QuantumAuth logo',
+                src: 'img/logo.svg', // add your logo here (or use favicon for now)
+            },
+            items: [
+                {
+                    type: 'docSidebar',
+                    sidebarId: 'tutorialSidebar',
+                    position: 'left',
+                    label: 'Docs',
+                },
+                {
+                    label: 'Blog',
+                    to: '/blog',
+                    position: 'left',
+                },
+                {
+                    href: 'https://quantumauth-io.github.io/quantumauth-docs/docs/0-Introduction/what-is-quantumauth',
+                    label: 'Getting started',
+                    position: 'left',
+                },
+                {
+                    href: 'https://github.com/quantumauth-io/quantum-auth',
+                    label: 'Server',
+                    position: 'right',
+                },
+                {
+                    href: 'https://github.com/quantumauth-io/quantum-auth-client',
+                    label: 'Client',
+                    position: 'right',
+                },
+                {
+                    href: 'https://github.com/quantumauth-io',
+                    label: 'GitHub',
+                    position: 'right',
+                },
+            ],
+        },
+
+        footer: {
+            style: 'dark',
+            links: [
+                {
+                    title: 'Docs',
+                    items: [
+                        {
+                            label: 'Getting started',
+                            to: '/docs/0-Introduction/what-is-quantumauth',
+                        },
+                        {
+                            label: 'Core concepts',
+                            to: '/docs/2-Concepts/device-bound-identity',
+                        },
+                        {
+                            label: 'SDK',
+                            to: '/docs/3-SDK/javascript/install',
+                        },
+                    ],
+                },
+                {
+                    title: 'Ecosystem',
+                    items: [
+                        {
+                            label: 'QuantumAuth Server',
+                            href: 'https://github.com/quantumauth-io/quantum-auth',
+                        },
+                        {
+                            label: 'QuantumAuth Client',
+                            href: 'https://github.com/quantumauth-io/quantum-auth-client',
+                        },
+                        {
+                            label: 'QuantumAuth SDK',
+                            href: 'https://github.com/quantumauth-io/quantum-auth-sdk',
+                        },
+                        {
+                            label: 'Quantum Web (portal)',
+                            href: 'https://github.com/quantumauth-io/quantum-web',
+                        },
+                    ],
+                },
+                {
+                    title: 'Community',
+                    items: [
+                        {
+                            label: 'GitHub Issues',
+                            href: 'https://github.com/quantumauth-io/quantum-auth/issues',
+                        },
+                        {
+                            label: 'Organization',
+                            href: 'https://github.com/quantumauth-io',
+                        },
+                    ],
+                },
+            ],
+            copyright: `© ${new Date().getFullYear()} QuantumAuth. Built with Docusaurus.`,
+        },
+
+        prism: {
+            theme: prismThemes.dracula,
+            darkTheme: prismThemes.dracula,
+        },
     },
-    navbar: {
-      title: 'My Site',
-      logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
-      },
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
-        },
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
-        },
-      ],
+    markdown: {
+        mermaid: true,
     },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
-    },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-    },
-  } satisfies Preset.ThemeConfig,
+    themes: ['@docusaurus/theme-mermaid'],
 };
 
 export default config;
