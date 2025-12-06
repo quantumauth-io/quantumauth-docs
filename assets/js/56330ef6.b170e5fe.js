@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkquantum_docs=globalThis.webpackChunkquantum_docs||[]).push([[3541],{8503:t=>{t.exports=JSON.parse('{"metadata":{"permalink":"/quantumauth-docs/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Updates, releases, security insights & engineering notes.","blogTitle":"QuantumAuth Blog"}}')}}]);

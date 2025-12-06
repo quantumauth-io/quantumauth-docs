@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkquantum_docs=globalThis.webpackChunkquantum_docs||[]).push([[9526],{7667:u=>{u.exports=JSON.parse('{"authors":[{"name":"Ian Dorion","title":"QuantumAuth Founder","url":"https://www.linkedin.com/in/ian-dorion","imageURL":"/quantumauth-docs/img/ian.jpeg","key":"quantum","page":null,"count":1}]}')}}]);

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://quantumauth-io.github.io/quantumauth-docs/blog</id>
+    <title>QuantumAuth Blog</title>
+    <updated>2025-12-04T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://quantumauth-io.github.io/quantumauth-docs/blog"/>
+    <subtitle>QuantumAuth Blog</subtitle>
+    <icon>https://quantumauth-io.github.io/quantumauth-docs/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Welcome to the QuantumAuth Blog]]></title>
+        <id>https://quantumauth-io.github.io/quantumauth-docs/blog/2025/12/04/welcome</id>
+        <link href="https://quantumauth-io.github.io/quantumauth-docs/blog/2025/12/04/welcome"/>
+        <updated>2025-12-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The official development and release blog for QuantumAuth.]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to the <strong>QuantumAuth blog</strong>!<br>
+<!-- -->This is where we’ll publish:</p>
+<ul>
+<li class="">development progress</li>
+<li class="">release notes</li>
+<li class="">security insights</li>
+<li class="">deep dives into TPM, device-bound identity, and protocols</li>
+<li class="">developer stories and architecture breakdowns</li>
+</ul>
+<p>More posts coming soon 🚀</p>]]></content>
+        <author>
+            <name>Ian Dorion</name>
+            <uri>https://www.linkedin.com/in/ian-dorion</uri>
+        </author>
+        <category label="Intro" term="Intro"/>
+        <category label="Roadmap" term="Roadmap"/>
+        <category label="Security" term="Security"/>
+    </entry>
+</feed>
