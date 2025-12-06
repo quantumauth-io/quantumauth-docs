@@ -22,12 +22,12 @@ function HomepageHeader() {
                     Device-bound, quantum-inspired authentication.
                 </p>
                 <div className={styles.heroButtons}>
-                    <Link
-                        className={`${styles.buttonPrimary}`}
-                        to="/docs/0-Introduction/what-is-quantumauth"
-                    >
-                        Get started
-                    </Link>
+                    {/*<Link*/}
+                    {/*    className={`${styles.buttonPrimary}`}*/}
+                    {/*    to="/docs/0-Introduction/what-is-quantumauth?"*/}
+                    {/*>*/}
+                    {/*    Get started*/}
+                    {/*</Link>*/}
                     <a
                         className={styles.buttonGhost}
                         href="https://github.com/quantumauth-io"

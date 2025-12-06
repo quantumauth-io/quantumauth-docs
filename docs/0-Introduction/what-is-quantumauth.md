@@ -2,6 +2,7 @@
 id: what-is-quantumauth
 title: What is QuantumAuth?
 sidebar_label: What is QuantumAuth?
+slug: /0-Introduction/what-is-quantumauth
 ---
 
 # What is QuantumAuth?

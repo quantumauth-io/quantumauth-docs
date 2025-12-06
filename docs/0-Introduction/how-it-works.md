@@ -1,7 +1,5 @@
 ---
-id: how-quantumauth-works
 title: How QuantumAuth Works
-sidebar_label: How QuantumAuth Works
 ---
 
 QuantumAuth replaces traditional login systems with **device-bound identity** rooted in secure hardware.  

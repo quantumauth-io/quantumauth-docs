@@ -1,7 +1,5 @@
 ---
-id: architecture-overview
 title: Architecture Overview
-sidebar_label: Architecture Overview
 ---
 
 QuantumAuth provides **formless, passwordless, device-bound authentication**.

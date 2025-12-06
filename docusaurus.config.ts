@@ -13,8 +13,6 @@ const config: Config = {
     organizationName: 'quantumauth-io',
     projectName: 'quantumauth-docs',
 
-    onBrokenLinks: 'throw',
-    onBrokenMarkdownLinks: 'warn',
     trailingSlash: false,
 
     i18n: {
@@ -101,14 +99,6 @@ const config: Config = {
                             label: 'Getting started',
                             to: '/docs/0-Introduction/what-is-quantumauth',
                         },
-                        {
-                            label: 'Core concepts',
-                            to: '/docs/2-Concepts/device-bound-identity',
-                        },
-                        {
-                            label: 'SDK',
-                            to: '/docs/3-SDK/javascript/install',
-                        },
                     ],
                 },
                 {
@@ -156,6 +146,9 @@ const config: Config = {
     },
     markdown: {
         mermaid: true,
+        hooks:{
+            onBrokenMarkdownLinks: 'warn',
+        }
     },
     themes: ['@docusaurus/theme-mermaid'],
 };
