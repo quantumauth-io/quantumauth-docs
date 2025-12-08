@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-Introduction/QuantumAuth-vs-WebAuthn" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">QuantumAuth VS WebAuthn | QuantumAuth</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://quantumauth-io.github.io/quantumauth-docs/docs/Introduction/QuantumAuth-vs-WebAuthn"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="QuantumAuth VS WebAuthn | QuantumAuth"><meta data-rh="true" name="description" content="QuantumAuth and WebAuthn both rely on hardware-backed authentication, but QuantumAuth extends the model far beyond WebAuthn’s capabilities."><meta data-rh="true" property="og:description" content="QuantumAuth and WebAuthn both rely on hardware-backed authentication, but QuantumAuth extends the model far beyond WebAuthn’s capabilities."><link data-rh="true" rel="icon" href="/quantumauth-docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://quantumauth-io.github.io/quantumauth-docs/docs/Introduction/QuantumAuth-vs-WebAuthn"><link data-rh="true" rel="alternate" href="https://quantumauth-io.github.io/quantumauth-docs/docs/Introduction/QuantumAuth-vs-WebAuthn" hreflang="en"><link data-rh="true" rel="alternate" href="https://quantumauth-io.github.io/quantumauth-docs/docs/Introduction/QuantumAuth-vs-WebAuthn" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"QuantumAuth VS WebAuthn","item":"https://quantumauth-io.github.io/quantumauth-docs/docs/Introduction/QuantumAuth-vs-WebAuthn"}]}</script><link rel="alternate" type="application/rss+xml" href="/quantumauth-docs/blog/rss.xml" title="QuantumAuth RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/quantumauth-docs/blog/atom.xml" title="QuantumAuth Atom Feed"><link rel="stylesheet" href="/quantumauth-docs/assets/css/styles.65e0d6ce.css">
+<script src="/quantumauth-docs/assets/js/runtime~main.fc3fb8ee.js" defer="defer"></script>
+<script src="/quantumauth-docs/assets/js/main.51101ad5.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/quantumauth-docs/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_k978" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/quantumauth-docs/"><div class="navbar__logo"><img src="/quantumauth-docs/img/logo.svg" alt="QuantumAuth logo" class="themedComponent_beCX themedComponent--light_Hbs7"><img src="/quantumauth-docs/img/logo.svg" alt="QuantumAuth logo" class="themedComponent_beCX themedComponent--dark_a98I"></div><b class="navbar__title text--truncate">QuantumAuth</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/quantumauth-docs/docs/0-Introduction/what-is-quantumauth">Docs</a><a class="navbar__item navbar__link" href="/quantumauth-docs/blog">Blog</a><a href="https://quantumauth-io.github.io/quantumauth-docs/docs/0-Introduction/what-is-quantumauth" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Getting started<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/quantumauth-io/quantum-auth" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Server<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a><a href="https://github.com/quantumauth-io/quantum-auth-client" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Client<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a><a href="https://github.com/quantumauth-io" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_lwka colorModeToggle_SVpo"><button class="clean-btn toggleButton_Mbg6 toggleButtonDisabled_dsJi" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_LX0_ lightToggleIcon_iZ7o"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_LX0_ darkToggleIcon_sbHe"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_LX0_ systemToggleIcon_rNLr"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_bxl4"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_CSSr"><div class="docsWrapper_b3o4"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_ngaE" type="button"></button><div class="docRoot_vnET"><aside class="theme-doc-sidebar-container docSidebarContainer_lkE3"><div class="sidebarViewport_l_GY"><div class="sidebar_rAVx"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_V6cO"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_NYqt menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/quantumauth-docs/docs/0-Introduction/what-is-quantumauth"><span title="Introduction" class="categoryLinkLabel_ExjS">Introduction</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/quantumauth-docs/docs/0-Introduction/what-is-quantumauth"><span title="What is QuantumAuth?" class="linkLabel_ElBB">What is QuantumAuth?</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/quantumauth-docs/docs/Introduction/how-it-works"><span title="How QuantumAuth Works?" class="linkLabel_ElBB">How QuantumAuth Works?</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/quantumauth-docs/docs/Introduction/architecture-overview"><span title="Architecture Overview" class="linkLabel_ElBB">Architecture Overview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/quantumauth-docs/docs/Introduction/why-quantumauth"><span title="Why QuantumAuth?" class="linkLabel_ElBB">Why QuantumAuth?</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/quantumauth-docs/docs/Introduction/QuantumAuth-vs-KeePass"><span title="QuantumAuth VS KeePass" class="linkLabel_ElBB">QuantumAuth VS KeePass</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/quantumauth-docs/docs/Introduction/QuantumAuth-vs-WebAuthn"><span title="QuantumAuth VS WebAuthn" class="linkLabel_ElBB">QuantumAuth VS WebAuthn</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/quantumauth-docs/docs/Introduction/QuantumAuth-Why-More-Secure-Than-All-Others"><span title="Why QuantumAuth Is More Secure Than All Others?" class="linkLabel_ElBB">Why QuantumAuth Is More Secure Than All Others?</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_WeUM"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_qoff"><div class="docItemContainer_phNv"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_q0fI" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/quantumauth-docs/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_UB4j"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Introduction</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">QuantumAuth VS WebAuthn</span></li></ul></nav><div class="tocCollapsible_Jjm_ theme-doc-toc-mobile tocMobile_KLro"><button type="button" class="clean-btn tocCollapsibleButton_ibvO">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>QuantumAuth vs WebAuthn</h1></header>
+<p>QuantumAuth and WebAuthn both rely on hardware-backed authentication, but QuantumAuth extends the model far beyond WebAuthn’s capabilities.<br>
+<!-- -->This document explains <strong>why QuantumAuth is more secure, more flexible, and more resilient</strong> than WebAuthn across real-world threat models.</p>
+<hr>
+<h1>1. Purpose &amp; Design Goals</h1>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="webauthn"><strong>WebAuthn</strong><a href="#webauthn" class="hash-link" aria-label="Direct link to webauthn" title="Direct link to webauthn" translate="no">​</a></h3>
+<ul>
+<li class="">Designed for <strong>website login</strong>.</li>
+<li class="">Works only <strong>inside browsers</strong>.</li>
+<li class="">Credentials are <strong>domain-bound</strong>.</li>
+<li class="">Requires <strong>user interaction</strong> (touch / biometric / PIN).</li>
+<li class="">Still relies on <strong>sessions or tokens</strong> after login.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="quantumauth"><strong>QuantumAuth</strong><a href="#quantumauth" class="hash-link" aria-label="Direct link to quantumauth" title="Direct link to quantumauth" translate="no">​</a></h3>
+<ul>
+<li class="">Designed for <strong>global device-bound identity</strong>, not just login.</li>
+<li class="">Works with <strong>browsers, native apps, backends, microservices, IoT</strong>.</li>
+<li class="">One device identity works across <strong>any number of services</strong>.</li>
+<li class="">Zero user interaction after enrollment.</li>
+<li class="">Removes sessions, cookies, tokens, and passwords entirely.</li>
+</ul>
+<hr>
+<h1>2. Multi-Layer Hardware Security (TPM + PQ)</h1>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="webauthn-1"><strong>WebAuthn</strong><a href="#webauthn-1" class="hash-link" aria-label="Direct link to webauthn-1" title="Direct link to webauthn-1" translate="no">​</a></h3>
+<ul>
+<li class="">Uses <strong>one</strong> TPM-backed private key (usually P-256 ECC).</li>
+<li class="">No post-quantum protection.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="quantumauth-1"><strong>QuantumAuth</strong><a href="#quantumauth-1" class="hash-link" aria-label="Direct link to quantumauth-1" title="Direct link to quantumauth-1" translate="no">​</a></h3>
+<ul>
+<li class="">Uses <strong>two</strong> independent signing layers:<!-- -->
+<ul>
+<li class="">TPM hardware signature</li>
+<li class="">Post-quantum signature (Dilithium, Falcon, etc.)</li>
+</ul>
+</li>
+<li class="">Layers are combined and verified together.</li>
+<li class="">Even if ECC breaks (quantum computer), PQ layer stays valid.</li>
+</ul>
+<p><strong>Advantage:</strong> QuantumAuth is <strong>post-quantum secure today</strong>, WebAuthn is not.</p>
+<hr>
+<h1>3. Zero Tokens, Zero Sessions, Zero Cookies</h1>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="webauthn-2"><strong>WebAuthn</strong><a href="#webauthn-2" class="hash-link" aria-label="Direct link to webauthn-2" title="Direct link to webauthn-2" translate="no">​</a></h3>
+<p>After login, servers still issue:</p>
+<ul>
+<li class="">JWT access tokens</li>
+<li class="">Refresh tokens</li>
+<li class="">Session cookies</li>
+</ul>
+<p>These are all attack vectors:</p>
+<ul>
+<li class="">XSS → steal JWT</li>
+<li class="">CSRF → abuse cookies</li>
+<li class="">Redis/DB leaks → steal sessions</li>
+<li class="">DevOps secret leak → forge JWTs</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="quantumauth-2"><strong>QuantumAuth</strong><a href="#quantumauth-2" class="hash-link" aria-label="Direct link to quantumauth-2" title="Direct link to quantumauth-2" translate="no">​</a></h3>
+<ul>
+<li class="">Every request is <strong>freshly signed</strong>.</li>
+<li class="">No sessions.</li>
+<li class="">No bearer tokens.</li>
+<li class="">No refresh tokens.</li>
+<li class="">Nothing stored server-side.</li>
+</ul>
+<p><strong>Advantage:</strong> Token theft and session hijacking become impossible.</p>
+<hr>
+<h1>4. Resistant to Server Breaches</h1>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="if-a-webauthn-server-is-breached"><strong>If a WebAuthn server is breached:</strong><a href="#if-a-webauthn-server-is-breached" class="hash-link" aria-label="Direct link to if-a-webauthn-server-is-breached" title="Direct link to if-a-webauthn-server-is-breached" translate="no">​</a></h3>
+<ul>
+<li class="">Attacker gets session store, user mapping, maybe JWT signing keys.</li>
+<li class="">They can often mint valid tokens and impersonate users.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="if-a-quantumauth-server-is-breached"><strong>If a QuantumAuth server is breached:</strong><a href="#if-a-quantumauth-server-is-breached" class="hash-link" aria-label="Direct link to if-a-quantumauth-server-is-breached" title="Direct link to if-a-quantumauth-server-is-breached" translate="no">​</a></h3>
+<ul>
+<li class="">Only public keys + Argon2 hashes leak.</li>
+<li class="">No reusable credentials.</li>
+<li class="">No login tokens.</li>
+<li class="">No private key material.</li>
+<li class="">Cannot impersonate users.</li>
+</ul>
+<p><strong>Advantage:</strong> Server compromise does <em>not</em> compromise identities.</p>
+<hr>
+<h1>5. Identity Beyond the Browser</h1>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="webauthn-3"><strong>WebAuthn</strong><a href="#webauthn-3" class="hash-link" aria-label="Direct link to webauthn-3" title="Direct link to webauthn-3" translate="no">​</a></h3>
+<ul>
+<li class="">Browser API only.</li>
+<li class="">Not usable for:<!-- -->
+<ul>
+<li class="">CLI tools</li>
+<li class="">Microservices</li>
+<li class="">Server-to-server auth</li>
+<li class="">IoT devices</li>
+<li class="">Industrial systems</li>
+<li class="">Kiosks / ATMs</li>
+<li class="">Native desktop apps (no browser = no WebAuthn)</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="quantumauth-3"><strong>QuantumAuth</strong><a href="#quantumauth-3" class="hash-link" aria-label="Direct link to quantumauth-3" title="Direct link to quantumauth-3" translate="no">​</a></h3>
+<ul>
+<li class="">Works system-wide via a local daemon.</li>
+<li class="">Any app can authenticate:<!-- -->
+<ul>
+<li class="">Browsers</li>
+<li class="">Servers</li>
+<li class="">Native apps</li>
+<li class="">Scripts</li>
+<li class="">Containers</li>
+<li class="">IoT hardware</li>
+</ul>
+</li>
+</ul>
+<p><strong>Advantage:</strong> QuantumAuth solves <strong>global identity</strong>, not just login.</p>
+<hr>
+<h1>6. Device + User Secret + Daemon Isolation</h1>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="webauthn-4"><strong>WebAuthn</strong><a href="#webauthn-4" class="hash-link" aria-label="Direct link to webauthn-4" title="Direct link to webauthn-4" translate="no">​</a></h3>
+<p>Requires:</p>
+<ul>
+<li class="">User presence (touch/biometric)</li>
+<li class="">Hardware key</li>
+</ul>
+<p>But resident credentials can be triggered silently by malware if:</p>
+<ul>
+<li class="">Browser is hijacked,</li>
+<li class="">User is tricked into unlocking the key once,</li>
+<li class="">Access is granted to the credential.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="quantumauth-4"><strong>QuantumAuth</strong><a href="#quantumauth-4" class="hash-link" aria-label="Direct link to quantumauth-4" title="Direct link to quantumauth-4" translate="no">​</a></h3>
+<p>To sign anything, an attacker needs:</p>
+<ol>
+<li class=""><strong>Physical access to the device</strong></li>
+<li class=""><strong>OS login credentials</strong></li>
+<li class=""><strong>QuantumAuth daemon password</strong></li>
+<li class=""><strong>Ability to send requests through the local daemon</strong></li>
+</ol>
+<p>Three independent layers must be broken.</p>
+<p><strong>Advantage:</strong> QuantumAuth eliminates many bypass paths WebAuthn leaves open.</p>
+<hr>
+<h1>7. No Domain Binding — One Device Identity for All Services</h1>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="webauthn-5"><strong>WebAuthn</strong><a href="#webauthn-5" class="hash-link" aria-label="Direct link to webauthn-5" title="Direct link to webauthn-5" translate="no">​</a></h3>
+<ul>
+<li class="">A credential is bound to a <strong>single domain</strong>.</li>
+<li class="">One keypair per website.</li>
+<li class="">Not usable for federated identity.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="quantumauth-5"><strong>QuantumAuth</strong><a href="#quantumauth-5" class="hash-link" aria-label="Direct link to quantumauth-5" title="Direct link to quantumauth-5" translate="no">​</a></h3>
+<ul>
+<li class="">One device identity works across:<!-- -->
+<ul>
+<li class="">1 service</li>
+<li class="">10 services</li>
+<li class="">1,000 services</li>
+</ul>
+</li>
+<li class="">Third-party apps never see private keys.</li>
+<li class="">QuantumAuth server verifies hardware + PQ signatures for everyone.</li>
+</ul>
+<p><strong>Advantage:</strong> Cross-service identity with no credential duplication.</p>
+<hr>
+<h1>8. Not Just Login — Every Request Is Verified</h1>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="webauthn-6"><strong>WebAuthn</strong><a href="#webauthn-6" class="hash-link" aria-label="Direct link to webauthn-6" title="Direct link to webauthn-6" translate="no">​</a></h3>
+<ul>
+<li class="">Protects login.</li>
+<li class="">After login, relies on:<!-- -->
+<ul>
+<li class="">JWT</li>
+<li class="">Cookies</li>
+<li class="">Sessions</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="quantumauth-6"><strong>QuantumAuth</strong><a href="#quantumauth-6" class="hash-link" aria-label="Direct link to quantumauth-6" title="Direct link to quantumauth-6" translate="no">​</a></h3>
+<ul>
+<li class="">Protects <strong>every request</strong>.</li>
+<li class="">Every request has:<!-- -->
+<ul>
+<li class="">Unique challenge</li>
+<li class="">TPM signature</li>
+<li class="">Post-quantum signature</li>
+</ul>
+</li>
+<li class="">Third party backends authenticate users with <strong>no stored credentials</strong>.</li>
+</ul>
+<p><strong>Advantage:</strong> Eliminates entire classes of post-login attacks.</p>
+<hr>
+<h1>9. Malware Request Defense</h1>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="webauthn-7"><strong>WebAuthn</strong><a href="#webauthn-7" class="hash-link" aria-label="Direct link to webauthn-7" title="Direct link to webauthn-7" translate="no">​</a></h3>
+<p>Browsers or malware inside the browser can:</p>
+<ul>
+<li class="">Call WebAuthn APIs</li>
+<li class="">Trigger credentials</li>
+<li class="">Abuse resident keys</li>
+</ul>
+<p>There is no system-level policy.</p>
+<h3 class="anchor anchorTargetStickyNavbar_BB1v" id="quantumauth-7"><strong>QuantumAuth</strong><a href="#quantumauth-7" class="hash-link" aria-label="Direct link to quantumauth-7" title="Direct link to quantumauth-7" translate="no">​</a></h3>
+<p>The daemon:</p>
+<ul>
+<li class="">Filters which apps can request signatures</li>
+<li class="">Enforces policies</li>
+<li class="">Enforces rate limits</li>
+<li class="">Can block malicious origins</li>
+<li class="">Never exposes signing interfaces to web pages directly</li>
+</ul>
+<p><strong>Advantage:</strong> Local device isolation stops signature abuse.</p>
+<hr>
+<h1>10. Summary Table</h1>
+<table><thead><tr><th>Feature</th><th>WebAuthn</th><th>QuantumAuth</th><th>Winner</th></tr></thead><tbody><tr><td>Hardware-backed keys</td><td>✔️</td><td>✔️</td><td>Tie</td></tr><tr><td>Post-quantum protection</td><td>❌</td><td>✔️</td><td>QuantumAuth</td></tr><tr><td>Multi-layer signatures</td><td>❌</td><td>✔️ TPM + PQ</td><td>QuantumAuth</td></tr><tr><td>Zero tokens/cookies/sessions</td><td>❌</td><td>✔️</td><td>QuantumAuth</td></tr><tr><td>Safe against server breach</td><td>⚠️</td><td>✔️</td><td>QuantumAuth</td></tr><tr><td>Works outside browser</td><td>❌</td><td>✔️</td><td>QuantumAuth</td></tr><tr><td>One identity for all services</td><td>❌</td><td>✔️</td><td>QuantumAuth</td></tr><tr><td>Malware-trigger protection</td><td>❌</td><td>✔️ daemon isolation</td><td>QuantumAuth</td></tr><tr><td>User friction</td><td>High</td><td>Zero after enrollment</td><td>QuantumAuth</td></tr><tr><td>Federated identity</td><td>❌</td><td>✔️</td><td>QuantumAuth</td></tr></tbody></table>
+<hr>
+<h1>Final Summary</h1>
+<blockquote>
+<p><strong>WebAuthn secures login.<br>
+<!-- -->QuantumAuth secures every request.</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>WebAuthn protects against phishing.<br>
+<!-- -->QuantumAuth protects against phishing, token theft, session hijacking, server breaches, supply chain attacks, and quantum cryptanalysis.</strong></p>
+</blockquote>
+<p>QuantumAuth is not a replacement for WebAuthn — it is the <strong>next evolution</strong> of hardware-based authentication.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_LFcd"><a href="https://github.com/quantumauth-io/quantumauth-docs/edit/main/docs/0-Introduction/QuantumAuth-vs-WebAuthn.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_cm6n" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_o2CG"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/quantumauth-docs/docs/Introduction/QuantumAuth-vs-KeePass"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">QuantumAuth VS KeePass</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/quantumauth-docs/docs/Introduction/QuantumAuth-Why-More-Secure-Than-All-Others"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Why QuantumAuth Is More Secure Than All Others?</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_Odgc thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#webauthn" class="table-of-contents__link toc-highlight"><strong>WebAuthn</strong></a></li><li><a href="#quantumauth" class="table-of-contents__link toc-highlight"><strong>QuantumAuth</strong></a></li><li><a href="#webauthn-1" class="table-of-contents__link toc-highlight"><strong>WebAuthn</strong></a></li><li><a href="#quantumauth-1" class="table-of-contents__link toc-highlight"><strong>QuantumAuth</strong></a></li><li><a href="#webauthn-2" class="table-of-contents__link toc-highlight"><strong>WebAuthn</strong></a></li><li><a href="#quantumauth-2" class="table-of-contents__link toc-highlight"><strong>QuantumAuth</strong></a></li><li><a href="#if-a-webauthn-server-is-breached" class="table-of-contents__link toc-highlight"><strong>If a WebAuthn server is breached:</strong></a></li><li><a href="#if-a-quantumauth-server-is-breached" class="table-of-contents__link toc-highlight"><strong>If a QuantumAuth server is breached:</strong></a></li><li><a href="#webauthn-3" class="table-of-contents__link toc-highlight"><strong>WebAuthn</strong></a></li><li><a href="#quantumauth-3" class="table-of-contents__link toc-highlight"><strong>QuantumAuth</strong></a></li><li><a href="#webauthn-4" class="table-of-contents__link toc-highlight"><strong>WebAuthn</strong></a></li><li><a href="#quantumauth-4" class="table-of-contents__link toc-highlight"><strong>QuantumAuth</strong></a></li><li><a href="#webauthn-5" class="table-of-contents__link toc-highlight"><strong>WebAuthn</strong></a></li><li><a href="#quantumauth-5" class="table-of-contents__link toc-highlight"><strong>QuantumAuth</strong></a></li><li><a href="#webauthn-6" class="table-of-contents__link toc-highlight"><strong>WebAuthn</strong></a></li><li><a href="#quantumauth-6" class="table-of-contents__link toc-highlight"><strong>QuantumAuth</strong></a></li><li><a href="#webauthn-7" class="table-of-contents__link toc-highlight"><strong>WebAuthn</strong></a></li><li><a href="#quantumauth-7" class="table-of-contents__link toc-highlight"><strong>QuantumAuth</strong></a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/quantumauth-docs/docs/0-Introduction/what-is-quantumauth">Getting started</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Ecosystem</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/quantumauth-io/quantum-auth" target="_blank" rel="noopener noreferrer" class="footer__link-item">QuantumAuth Server<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/quantumauth-io/quantum-auth-client" target="_blank" rel="noopener noreferrer" class="footer__link-item">QuantumAuth Client<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/quantumauth-io/quantum-auth-sdk" target="_blank" rel="noopener noreferrer" class="footer__link-item">QuantumAuth SDK<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/quantumauth-io/quantum-web" target="_blank" rel="noopener noreferrer" class="footer__link-item">Quantum Web (portal)<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/quantumauth-io/quantum-auth/issues" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub Issues<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/quantumauth-io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Organization<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_Cy_U"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 QuantumAuth. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
