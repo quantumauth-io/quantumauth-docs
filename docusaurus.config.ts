@@ -9,7 +9,7 @@ const config: Config = {
     favicon: 'img/favicon.ico',
 
     url: 'https://docs.quantumauth.io',
-    baseUrl: '/quantumauth-docs/',
+    baseUrl: '/',
     organizationName: 'quantumauth-io',
     projectName: 'quantumauth-docs',
 
