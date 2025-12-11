@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkquantum_docs=globalThis.webpackChunkquantum_docs||[]).push([[1903],{1912:a=>{a.exports=JSON.parse('{"blogBasePath":"/blog","blogTitle":"QuantumAuth Blog","authorsListPath":"/blog/authors"}')}}]);
