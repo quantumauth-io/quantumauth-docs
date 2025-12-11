@@ -52,7 +52,7 @@ const config: Config = {
             title: 'QuantumAuth',
             logo: {
                 alt: 'QuantumAuth logo',
-                src: 'img/logo.svg', // add your logo here (or use favicon for now)
+                src: 'img/icon128.png', // add your logo here (or use favicon for now)
             },
             items: [
                 {
