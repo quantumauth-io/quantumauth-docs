@@ -8,7 +8,7 @@ const config: Config = {
     tagline: 'Device-bound, quantum-inspired authentication.',
     favicon: 'img/favicon.ico',
 
-    url: 'https://quantumauth-io.github.io',
+    url: 'https://docs.quantumauth.io',
     baseUrl: '/quantumauth-docs/',
     organizationName: 'quantumauth-io',
     projectName: 'quantumauth-docs',
