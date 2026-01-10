@@ -3,30 +3,44 @@ sidebar_position: 3
 title: Architecture Overview
 ---
 
-QuantumAuth provides **formless, passwordless, device-bound authentication**.
+QuantumAuth provides **passwordless, device-bound authentication and wallet infrastructure** rooted in secure hardware.
 
-Instead of users logging into each application, they authenticate **once** on their own machine using the QuantumAuth Client. From that point on, any participating application can rely on the QuantumAuth platform to authenticate user actions, without implementing login forms, password storage, or token logic.
+Users authenticate **once** on their own machine using the QuantumAuth Client. From that point on, applications and Web3 dApps can rely on the QuantumAuth platform to authenticate user actions and authorize transactions — **without login forms, passwords, browser wallets, seed phrases, or token logic**.
 
-QuantumAuth is composed of three main components:
-
-- **QuantumAuth Client** – runs on the user’s machine, anchored to the TPM and using post-quantum (PQ) signatures.
-- **QuantumAuth Server** – central verification and policy service.
-- **QuantumAuth SDK** – middleware and helpers for third-party backends and frontends.
+Authentication and signing are removed from applications and browsers and handled locally by trusted device software.
 
 ---
 
-## High-Level Architecture
+## Core Components
+
+QuantumAuth is composed of four main components:
+
+- **QuantumAuth Client**  
+  Runs on the user’s machine. Anchored to the TPM and responsible for all cryptographic operations.
+
+- **QuantumAuth Browser Extension**  
+  A secure bridge between the browser and the local client. Holds no keys.
+
+- **QuantumAuth Server**  
+  Central verification, policy, and identity service.
+
+- **QuantumAuth SDK**  
+  Middleware and helpers used by third-party backends (and optionally frontends).
+
+---
+
+## High-Level Architecture (Authentication)
 
 ```mermaid
 flowchart LR
     subgraph UserDevice["User Machine"]
-        QAClient["QuantumAuth Client (TPM + PQ signatures)"]
+        QAClient["QuantumAuth Client<br/>(TPM + PQ signatures)"]
         Browser["App Frontend"]
-        Browser -->|"Authenticate request"| QAClient
+        Browser -->|"Auth request"| QAClient
     end
 
     subgraph ThirdParty["Third-Party Service"]
-        AppBackend["App Backend (with QA SDK middleware)"]
+        AppBackend["App Backend<br/>(QA SDK Middleware)"]
     end
 
     QAServer["QuantumAuth Server"]
@@ -39,116 +53,186 @@ flowchart LR
 
 ---
 
-## Components
+## High-Level Architecture (Wallet & Web3)
+
+```mermaid
+flowchart LR
+    subgraph UserDevice["User Machine"]
+        Browser["Web3 dApp"]
+        Extension["QuantumAuth Extension<br/>(bridge only)"]
+        QAClient["QuantumAuth Client<br/>(TPM-sealed wallet keys)"]
+
+        Browser -->|"EIP-1193 request"| Extension
+        Extension -->|"Forward request"| QAClient
+        QAClient -->|"Result / receipt"| Extension
+        Extension -->|"Response"| Browser
+    end
+
+    Blockchain["Blockchain / Bundler / RPC"]
+
+    QAClient -->|"Signed + submitted tx / userOp"| Blockchain
+```
+
+---
+
+## Component Details
 
 ### QuantumAuth Client (User Device)
 
-The QuantumAuth Client runs locally on the user’s machine and is the root of identity.
+The QuantumAuth Client is the **root of trust**.
 
 Responsibilities:
 
-- Performs the **initial login** on the device (user signs in once).
-- Generates and manages **TPM-backed key pairs**.
-- Produces **post-quantum signatures** for authenticated actions.
-- Exposes a **local HTTP API** (for example `http://localhost:8090`) that frontends can call to authenticate a request.
+- Performs the **one-time local login** on the device
+- Generates and manages **TPM-backed key material**
+- Seals authentication and wallet keys inside the TPM
+- Produces:
+  - Authentication proofs
+  - Wallet transaction signatures
+- Exposes a **local API** (e.g. `http://localhost:6137`) used by frontends and the extension
 
 Key properties:
 
-- Private keys **never leave the TPM**.
-- All authentication proofs are signed locally.
-- Once the user is logged into the Client, they do not need to log in again for each application on that device.
+- Private keys are **non-exportable**
+- All signing happens locally
+- No secrets ever reach the browser or applications
+
+---
+
+### QuantumAuth Browser Extension (Secure Bridge)
+
+The extension is **not a wallet** and **not a key store**.
+
+It does **not**:
+- Store private keys
+- Generate signatures
+- Hold seed phrases or secrets
+
+Responsibilities:
+
+- Acts as a secure bridge between browser contexts and the local client
+- Forwards EIP-1193 requests to the QuantumAuth Client
+- Enforces origin and request integrity
+- Prevents direct key access from JavaScript
+
+This removes the browser as a trust boundary.
 
 ---
 
 ### QuantumAuth Server
 
-The QuantumAuth Server is the global verification authority.
+The QuantumAuth Server is the global verification and policy authority.
 
 Responsibilities:
 
-- Validates TPM-backed, PQ-signed authentication proofs from user devices.
-- Associates device-bound identities with QuantumAuth accounts.
-- Applies security and access policies.
-- Returns a simple **valid / invalid** decision to third-party backends.
+- Verifies TPM-backed, PQ-signed authentication proofs
+- Maintains device ↔ user associations
+- Applies authentication and policy rules
+- Returns a simple **valid / invalid** decision to third-party backends
 
 The server:
 
-- Never receives or stores passwords.
-- Does not issue or manage traditional session or refresh tokens.
-- Focuses on **verifying proofs**, not on handling secrets.
+- Never receives passwords
+- Never stores private keys
+- Does not issue session or refresh tokens
+- Exists only to **verify proofs and enforce policy**
 
 ---
 
 ### QuantumAuth SDK
 
-The QuantumAuth SDK is used by third-party developers in their backends (and optionally frontends).
+The QuantumAuth SDK is used by third-party developers.
 
 **Backend responsibilities:**
 
-- Provides **middleware** that intercepts incoming requests.
-- Extracts the QuantumAuth proof attached by the frontend.
-- Sends the proof to the QuantumAuth Server for verification.
-- Marks the request as authenticated (with attached user/device identity) if the proof is valid.
+- Middleware to intercept incoming requests
+- Extracts QuantumAuth proofs
+- Canonicalizes requests
+- Verifies proofs via the QuantumAuth Server
+- Attaches authenticated identity to request context
 
-**Frontend responsibilities (optional helpers):**
+**Frontend helpers (optional):**
 
-- Provides utilities to call the local QuantumAuth Client from the browser or native app.
-- Attaches the QuantumAuth proof to outgoing requests to the third-party backend.
+- Utilities to call the local QuantumAuth Client
+- Helpers for attaching proofs to backend requests
 
 ---
 
-## End-to-End Request Flow
-
-At a high level, the interaction between the different parts looks like this:
+## End-to-End Authentication Flow
 
 ```mermaid
 sequenceDiagram
     participant User
-    participant QAClient as QuantumAuth Client (Local)
-    participant AppFrontend as Third-Party Frontend
-    participant AppBackend as Third-Party Backend
+    participant QAClient as QuantumAuth Client
+    participant Frontend as App Frontend
+    participant Backend as App Backend
     participant QAServer as QuantumAuth Server
 
-    User->>QAClient: One-time device login (TPM + PQ keypair)
-    Note over QAClient: User is now authenticated on this device
+    User->>QAClient: One-time device login
+    Note over QAClient: TPM + PQ keys initialized
 
-    AppFrontend->>QAClient: Authenticate this action
-    QAClient->>AppFrontend: Signed auth proof
+    Frontend->>QAClient: Authenticate this action
+    QAClient->>Frontend: Signed auth proof
 
-    AppFrontend->>AppBackend: Request + QuantumAuth proof
-    AppBackend->>QAServer: Verify proof (via QA SDK middleware)
-    QAServer->>AppBackend: Valid / Invalid
-    AppBackend->>AppFrontend: Response
+    Frontend->>Backend: Request + proof
+    Backend->>QAServer: Verify proof
+    QAServer->>Backend: Valid / Invalid
+    Backend->>Frontend: Response
+```
+
+---
+
+## End-to-End Wallet Flow (Account Abstraction)
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant DApp as Web3 dApp
+    participant Ext as QA Extension
+    participant QAClient as QuantumAuth Client
+    participant Chain as Blockchain / Bundler
+
+    User->>DApp: Interact with dApp
+    DApp->>Ext: Request transaction (EIP-1193)
+    Ext->>QAClient: Forward request
+    QAClient->>QAClient: Policy checks + signing
+    QAClient->>Chain: Submit signed tx / userOp
+    Chain->>QAClient: Result
+    QAClient->>Ext: Response
+    Ext->>DApp: Result
 ```
 
 ---
 
 ## Security Properties
 
-QuantumAuth is designed to provide:
+QuantumAuth provides:
 
 - **Hardware-rooted identity**  
-  Keys are generated and stored in the TPM; private keys are non-exportable.
+  TPM-sealed, non-exportable keys.
 
-- **Post-quantum secure signatures**  
-  Authentication proofs are signed with PQ-safe algorithms, resilient to both classical and quantum attacks.
+- **Post-quantum cryptography**  
+  Authentication and signing designed to remain secure against quantum adversaries.
 
-- **No passwords, no login forms**  
-  Users authenticate once with the QuantumAuth Client on their device. Applications never handle credentials.
+- **No passwords or seed phrases**  
+  Nothing to steal, leak, or phish.
 
-- **No token management**  
-  Third-party services do not need to issue, store, or refresh tokens. They simply verify each request with the QuantumAuth Server through the SDK.
+- **No browser-based key material**  
+  Browsers never hold private keys.
 
-- **Invisible authentication for users**  
-  Application UX is simplified: no login screens, no account creation flows, just trusted, device-bound actions.
+- **No token lifecycle management**  
+  Each request is verified independently.
+
+- **Account Abstraction–ready**  
+  Supports smart accounts, policies, recovery, and multi-factor execution.
 
 ---
 
 ## Summary
 
-QuantumAuth moves authentication away from individual applications and into a dedicated platform built on TPM-backed, post-quantum cryptography.
+QuantumAuth moves authentication and wallet security **out of applications and browsers** and anchors them directly in trusted device hardware.
 
-- Users log in **once** on their own machine.
-- Frontends talk to the **QuantumAuth Client** to authenticate requests.
-- Third-party backends rely on the **QuantumAuth SDK** and **QuantumAuth Server** to validate those requests.
-- Developers focus on business logic instead of building and maintaining fragile authentication systems.
+- Users authenticate **once** on their device
+- Apps rely on verified, device-bound proofs
+- Wallets operate without seed phrases or browser keys
+- Developers focus on business logic, not security plumbing

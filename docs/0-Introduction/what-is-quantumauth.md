@@ -8,96 +8,122 @@ slug: /0-Introduction/what-is-quantumauth
 
 # What is QuantumAuth?
 
-QuantumAuth is a **formless, passwordless, hardware‑rooted authentication platform** designed to eliminate the need for login screens, passwords, tokens, and traditional identity flows in modern applications.
+QuantumAuth is a **hardware-rooted, passwordless authentication and wallet platform** designed to eliminate passwords, login screens, browser-based wallets, and fragile identity flows.
 
-Instead of requiring users to authenticate individually with each app, QuantumAuth lets users **log in once on their own device**, using the QuantumAuth Client. From that moment on, every application running on that device can authenticate the user automatically — without ever handling credentials.
+Users authenticate **once on their own device**. From that moment on, applications can securely verify identity and authorize actions — **without handling credentials, secrets, tokens, or private keys**.
 
-QuantumAuth allows developers to completely remove:
-
-- passwords
-- login forms
-- OAuth/OIDC complexity
-- session management
-- token storage or refresh logic
-- secret handling
-
-Applications simply rely on the QuantumAuth SDK, and the platform takes care of identity verification end‑to‑end.
+QuantumAuth shifts trust away from browsers and passwords and anchors it directly in **device hardware**.
 
 ---
 
-## Core Concept: Hardware‑Bound Identity
+## Core Idea: Device-Bound Identity
 
-QuantumAuth anchors identity in the user’s device hardware:
+QuantumAuth binds identity to the user’s physical device:
 
-- A TPM-backed keypair is generated locally.
-- The private key never leaves the TPM.
-- The QuantumAuth Client signs authentication requests using:
-    - **TPM signatures** (hardware identity)
-    - **Post‑quantum signatures** (future‑proof cryptography)
+- A cryptographic key is generated and **sealed inside the TPM**
+- The private key **never leaves the hardware**
+- All authentication and signing operations happen locally
+- Nothing sensitive is exposed to apps, browsers, or websites
 
-The QuantumAuth Server verifies these signatures and ensures the request came from a valid user/device pair.  
-No passwords. No secrets in transit. No credential storage.
+Identity is proven cryptographically, not through shared secrets.
 
 ---
 
-## One-Time Device Login
+## Invisible Authentication (Short Version)
 
-Users authenticate **once** on their device using the QuantumAuth Client.
+Users authenticate **once** using the QuantumAuth Client.
 
 After that:
+- The device is trusted
+- Authentication happens automatically
+- Apps no longer need login flows
+- No passwords, tokens, cookies, or OAuth logic
 
-- The device becomes trusted by QuantumAuth.
-- All apps on the device can authenticate through the Client.
-- Authentication becomes invisible and frictionless.
-
-There is no per-app login flow — the platform handles everything.
+From the app’s perspective, authentication becomes a single verification call.
 
 ---
 
-## How Apps Use QuantumAuth
+## A Secure Wallet — Without a Browser Wallet
 
-Apps interact with QuantumAuth in two steps:
+QuantumAuth includes a **hardware-secured wallet** built on the same principles:
 
-### 1. The frontend calls the QuantumAuth Client
-It requests a signed authentication proof for the action the user is taking.
+- Wallet keys are **TPM-sealed**
+- No private keys in the browser
+- No seed phrases to phish or leak
+- No wallet extension managing secrets
 
-### 2. The backend verifies the proof via the QuantumAuth SDK
-The SDK sends the proof to the QuantumAuth Server, which validates it and returns:
+Instead of a browser wallet, QuantumAuth uses a **native client + secure extension bridge**.
 
-```json
-{
-  "authenticated": true,
-  "userId": "USER-UUID-HERE"
-}
-```
+---
 
-The backend now knows the identity of the user — securely and without ever handling a password or token.
+## The QuantumAuth Extension (Security Bridge)
+
+The browser extension does **not** store keys and is **not a wallet**.
+
+Its role:
+- Acts as a secure bridge between the browser and the local QuantumAuth Client
+- Forwards signing requests to the client
+- Prevents direct key access from websites or browser memory
+
+All cryptographic operations happen **outside the browser**, on the user’s machine.
+
+---
+
+## Account Abstraction (ERC-4337)
+
+QuantumAuth wallets are designed for **Account Abstraction**:
+
+- Smart accounts with programmable security policies
+- Hardware-backed signatures
+- Multi-factor and recovery logic
+- Policy-based transaction approval
+
+This enables:
+- Stronger protection for high-value actions
+- Governance-safe execution
+- Institutional-grade security without degrading UX
+
+---
+
+## EIP-1193 Compatibility
+
+QuantumAuth follows **EIP-1193** provider standards so it works with existing Web3 applications.
+
+From a dApp’s perspective:
+- QuantumAuth appears as a standard provider
+- No custom wallet integration required
+- No special-case logic
+
+Under the hood, security is dramatically stronger.
 
 ---
 
 ## Why QuantumAuth Exists
 
-Modern authentication is fragile:
+Modern authentication and wallets fail because:
 
-- Passwords get stolen.
-- Tokens leak.
-- OAuth/OIDC is too complex.
-- Credential storage creates liability.
-- Developers repeatedly implement authentication wrong.
+- Passwords get stolen
+- Seed phrases get phished
+- Browser wallets are high-risk
+- OAuth and token systems are fragile
+- Apps repeatedly re-implement auth incorrectly
 
-QuantumAuth solves all of this by removing authentication from applications entirely.
+QuantumAuth removes these failure modes by **removing secrets from apps and browsers entirely**.
 
-### QuantumAuth’s goals:
+---
 
-- **Eliminate passwords**
-- **Remove login flows from applications**
-- **Make authentication invisible for users**
-- **Provide cryptographically strong, device-bound identity**
-- **Future-proof authentication with post-quantum security**
-- **Give developers a simple, zero-config way to authenticate users**
+## What QuantumAuth Enables
+
+- Passwordless authentication
+- Hardware-bound identity
+- Wallets without seed phrases
+- No private keys in the browser
+- Secure Account Abstraction
+- Invisible authentication for users
+- Minimal integration for developers
 
 ---
 
 ## QuantumAuth in One Sentence
 
-**QuantumAuth is a hardware-rooted, post-quantum authentication platform that lets users log in once on their device and eliminates passwords, tokens, and login screens for every app.**
+**QuantumAuth is a hardware-rooted authentication and wallet platform that removes passwords, browser wallets, and seed phrases by anchoring identity and signing directly in device hardware.**
