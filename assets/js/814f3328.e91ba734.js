@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkquantum_docs=globalThis.webpackChunkquantum_docs||[]).push([[7472],{7894:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome to the QuantumAuth Blog","permalink":"/blog/2025/12/04/welcome","unlisted":false,"date":"2025-12-04T00:00:00.000Z"}]}')}}]);
