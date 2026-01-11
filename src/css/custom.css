@@ -1,30 +1,131 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Brand / accents (cyan -> blue) */
+  --color-qa-primary-600: rgb(2 132 199);
+  --color-qa-primary-500: rgb(14 165 233);
+  --color-qa-primary-400: rgb(56 189 248);
+
+  --color-qa-accent-600: rgb(37 99 235);
+  --color-qa-accent-500: rgb(59 130 246);
+  --color-qa-accent-400: rgb(96 165 250);
+
+  /* Backgrounds */
+  --color-qa-bg-950: rgb(3 7 18);
+  --color-qa-bg-900: rgb(8 16 34);
+  --color-qa-bg-850: rgb(12 23 48);
+
+  /* Surfaces */
+  --color-qa-surface-900: rgba(255, 255, 255, 0.06);
+  --color-qa-surface-800: rgba(255, 255, 255, 0.09);
+  --color-qa-surface-700: rgba(255, 255, 255, 0.12);
+
+  /* Borders */
+  --color-qa-border-weak: rgba(255, 255, 255, 0.10);
+  --color-qa-border: rgba(255, 255, 255, 0.14);
+  --color-qa-border-strong: rgba(255, 255, 255, 0.20);
+
+  /* Text */
+  --color-qa-text: rgba(255, 255, 255, 0.92);
+  --color-qa-muted: rgba(255, 255, 255, 0.70);
+  --color-qa-subtle: rgba(255, 255, 255, 0.55);
+
+  /* Shadows / radius */
+  --shadow-qa-lg: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --radius-qa: 16px;
+
+  /* Optional: map Docusaurus theme vars */
+  --ifm-font-color-base: var(--color-qa-text);
+  --ifm-background-color: var(--color-qa-bg-950);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+/* Docusaurus body background */
+/* 1) Paint the background on the real page canvas */
+html,
+body {
+  background: transparent !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+          radial-gradient(
+                  1200px 700px at 20% -10%,
+                  rgba(56, 189, 248, 0.12),
+                  transparent 60%
+          ),
+          radial-gradient(
+                  900px 600px at 90% 20%,
+                  rgba(59, 130, 246, 0.12),
+                  transparent 55%
+          ),
+          linear-gradient(
+                  180deg,
+                  var(--color-qa-bg-900),
+                  var(--color-qa-bg-950)
+          )
+
+  no-repeat fixed center / cover;
+}
+
+/* Make Docusaurus layers not paint over it */
+#__docusaurus,
+.main-wrapper,
+.navbar,
+.footer,
+.theme-doc-markdown,
+.theme-doc-sidebar-container,
+.theme-doc-footer {
+  background: transparent !important;
+}
+
+.main-wrapper {
+  background: transparent;
+}
+
+/* Optional: style the top navbar to match */
+.navbar {
+  background: rgba(6, 10, 18, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Reusable "surface" primitive */
+.qa-surface {
+  background: var(--color-qa-surface-900);
+  border: 1px solid var(--color-qa-border);
+  border-radius: var(--radius-qa);
+  box-shadow: var(--shadow-qa-lg);
+  backdrop-filter: blur(10px);
+}
+
+/* Footer: match navbar glass style */
+.footer {
+  background: rgba(6, 10, 18, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Footer text colors */
+.footer__title {
+  color: var(--color-qa-text);
+}
+
+.footer__item,
+.footer__link {
+  color: var(--color-qa-muted);
+}
+
+.footer__link:hover {
+  color: var(--color-qa-text);
+}
+
+/* Copyright line */
+.footer__copyright {
+  color: var(--color-qa-subtle);
 }

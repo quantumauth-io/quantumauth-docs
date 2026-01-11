@@ -1,45 +1,22 @@
-import React, {JSX} from "react";
+import React from "react";
 import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
 import styles from "./index.module.css";
 
 function HomepageHeader() {
     return (
-        <header className={styles.heroBanner}>
-            <div className={styles.quantumBg}>
-                <div className={`${styles.entangledPair} ${styles.pairLeft}`}>
-                    <div className={styles.electron} />
-                </div>
-                <div className={`${styles.entangledPair} ${styles.pairRight}`}>
-                    <div className={styles.electron} />
-                </div>
-                <div className={styles.entanglement} />
-            </div>
-
-            <div className={styles.heroContent}>
-                <h1 className={styles.heroTitle}>QuantumAuth</h1>
-                <p className={styles.heroSubtitle}>
-                    Device-bound, quantum-inspired authentication.
-                </p>
-                <div className={styles.heroButtons}>
-                    {/*<Link*/}
-                    {/*    className={`${styles.buttonPrimary}`}*/}
-                    {/*    to="/docs/0-Introduction/what-is-quantumauth?"*/}
-                    {/*>*/}
-                    {/*    Get started*/}
-                    {/*</Link>*/}
-                    <a
-                        className={styles.buttonGhost}
-                        href="https://github.com/quantumauth-io"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        View on GitHub
-                    </a>
+        <header className={styles.header}>
+            <div className={styles.headerInner}>
+                <div className={styles.headerCard}>
+                    <img
+                        className={styles.headerImage}
+                        src="/img/og.png"
+                        alt="QuantumAuth"
+                        loading="eager"
+                    />
                 </div>
             </div>
         </header>
-    );
+    )
 }
 
 function Feature({
@@ -57,7 +34,7 @@ function Feature({
     );
 }
 
-export default function Home(): JSX.Element {
+export default function Home(): React.JSX.Element {
     return (
         <Layout
             title="QuantumAuth"
